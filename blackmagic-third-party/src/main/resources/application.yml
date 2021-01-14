@@ -3,14 +3,5 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-    alicloud:
-      oss:
-        sts:
-          access-key: LTAI4GKf6WLq7Ncey4ptxDNq
-          secret-key: KKViEHDpTKObY6gGXs77faQymQRRd6
-        endpoint: oss-cn-guangzhou.aliyuncs.com
-        bucket: blackmagic
-      access-key: LTAI4GKf6WLq7Ncey4ptxDNq
-      secret-key: KKViEHDpTKObY6gGXs77faQymQRRd6
 server:
   port: 30000
