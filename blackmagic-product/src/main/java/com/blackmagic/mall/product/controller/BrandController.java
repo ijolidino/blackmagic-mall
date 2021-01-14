@@ -5,6 +5,7 @@ import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 import com.blackmagic.commons.valid.AddGroup;
+import com.blackmagic.commons.valid.UpdateGroup;
 import com.blackmagic.commons.valid.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -27,6 +28,17 @@ import com.blackmagic.commons.utils.R;
  * @author tanfuwen
  * @email 1149864038@qq.com
  * @date 2021-01-10 15:47:14
+ * JSR303
+ *   1）、给Bean添加校验注解:javax.validation.constraints，并定义自己的message提示
+ *   2)、开启校验功能@Valid
+ *      效果：校验错误以后会有默认的响应；
+ *   3）、给校验的bean后紧跟一个BindingResult，就可以获取到校验的结果
+ *   4）、分组校验（多场景的复杂校验）
+ *         1)、	@NotBlank(message = "品牌名必须提交",groups = {AddGroup.class,UpdateGroup.class})
+ *          给校验注解标注什么情况需要进行校验
+ *         2）、@Validated({AddGroup.class})
+ *         3)、默认没有指定分组的校验注解@NotBlank，在分组校验情况@Validated({AddGroup.class})下不生效，只会在@Validated生效；
+ *
  */
 @RestController
 @RequestMapping("product/brand")
@@ -82,7 +94,7 @@ public class BrandController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
+    public R update(@Validated(UpdateGroup.class)@RequestBody BrandEntity brand){
 		brandService.updateById(brand);
 
         return R.ok();
