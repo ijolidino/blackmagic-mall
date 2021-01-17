@@ -36,10 +36,10 @@ public class OssController {
     @RequestMapping("/oss/policy")
     public R policy() {
         // Endpoint以杭州为例，其它Region请按实际情况填写。
-        String endpoint = "";
+        String endpoint = "oss-cn-guangzhou.aliyuncs.com";
         // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建。
-        String accessKeyId = "";
-        String accessKeySecret = "";
+        String accessKeyId = "LTAI4GFZxpchTdCuYAmT21Gs";
+        String accessKeySecret = "HX0DXigOYEHsjVwlLFrKFXmgj1JdcN";
 
         String bucket = "blackmagic"; // 请填写您的 bucketname 。
         String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
